@@ -44,3 +44,18 @@ CREATE TABLE IF NOT EXISTS budgets (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES categories(id)
 );
+
+-- Seed data for categories
+INSERT INTO categories (name, icon_name) VALUES
+('Eating Out', 'utensils'),
+('Transport', 'bus'),
+('Rent', 'home'),
+('Study Materials', 'book'),
+('Social/Leisure', 'glass-cheers'),
+('Laundry', 'tshirt'),
+('Fuel', 'gas-pump'),
+('Groceries', 'shopping-basket'),
+('Utilities', 'lightbulb'),
+('Car Maintenance & Modification', 'car'),
+('Activities', 'running')
+;
