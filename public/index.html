@@ -4,10 +4,41 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>FinSight</title>
-        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <h1>FinSight</h1>
-        <p>Financial Insights at Your Fingertips</p>
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">Fin<span>Sight</span></div>
+                <div class="nav-links">
+                    <a href="#" class="nav-link active" data-target="dashboard-view">
+                        <i class="fas fa-chart-line"></i> Dashboard
+                    </a>
+                    <a href="#" class="nav-link" data-target="add-expense-view">
+                        <i class="fas fa-plus"></i> Add Expense
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <main class="content-area">
+            <section id="dashboard-view" class="view">
+                <div class="balance-card">
+                    <p>Total Spent</p>
+                    <h1>£0.00</h1>
+                </div>
+            </section>
+
+            <section id="add-expense-view" class="view hidden">
+                <div class="container">
+                    <h2>New Expense</h2>
+                    </div>
+            </section>
+        </main>
+
+        <script src="js/main.js"></script>
     </body>
 </html>
