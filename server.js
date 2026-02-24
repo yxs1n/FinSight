@@ -32,6 +32,18 @@ app.use(session({
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
+// Check if the user is currently logged in
+app.get('/auth/status', (req, res) => {
+    if (req.session && req.session.userId) {
+        res.json({
+            loggedIn: true,
+            user: { id: req.session.userId, first_name: req.session.firstName }
+        });
+    } else {
+        res.json({ loggedIn: false });
+    }
+});
+
 app.get('/test-db', async (req, res) => {
     try {
         const [rows] = await db.query('SELECT "Connection Succesful" as status');
