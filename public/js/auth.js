@@ -38,6 +38,7 @@ registerForm.addEventListener('submit', async (e) => {
         // Clear the form
         registerForm.reset();
 
+        updateNav(true);
         // Switch to dashboard view
         switchView('dashboard-view');
     } catch (err) {
@@ -78,6 +79,7 @@ loginForm.addEventListener('submit', async (e) => {
 
         loginForm.reset();
 
+        updateNav(true);
         switchView('dashboard-view');
     } catch (err) {
         loginError.textContent = 'Could not connect to server. Please try again.';

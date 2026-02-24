@@ -14,20 +14,23 @@
             <div class="nav-container">
                 <div class="logo">Fin<span>Sight</span></div>
                 <div class="nav-links">
-                    <a href="#" class="nav-link active" data-target="welcome-view">
+                    <a href="#" class="nav-link active" data-target="welcome-view" data-auth="guest">
                         <i class="fas fa-home"></i> Home
                     </a>
-                    <a href="#" class="nav-link" data-target="dashboard-view">
+                    <a href="#" class="nav-link" data-target="dashboard-view" data-auth="user">
                         <i class="fas fa-chart-line"></i> Dashboard
                     </a>
-                    <a href="#" class="nav-link" data-target="add-expense-view">
+                    <a href="#" class="nav-link" data-target="add-expense-view" data-auth="user">
                         <i class="fas fa-plus"></i> Add Expense
                     </a>
-                    <a href="#" class="nav-link" data-target="register-view">
+                    <a href="#" class="nav-link" data-target="register-view" data-auth="guest">
                         <i class="fas fa-user-plus"></i> Register
                     </a>
-                    <a href="#" class="nav-link" data-target="login-view">
+                    <a href="#" class="nav-link" data-target="login-view" data-auth="guest">
                         <i class="fas fa-sign-in-alt"></i> Log In
+                    </a>
+                    <a href="#" class="nav-link" id="logout-link" data-auth="user">
+                        <i class="fas fa-sign-in-alt"></i> Log Out
                     </a>
                 </div>
             </div>
