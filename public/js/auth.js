@@ -1,5 +1,5 @@
 /**
- * Register Form
+ * Register Form Handling
  */
 const registerForm = document.getElementById('register-form');
 const registerError = document.getElementById('register-error');
@@ -46,3 +46,41 @@ registerForm.addEventListener('submit', async (e) => {
         registerError.classList.remove('hidden');
     }
 })
+
+/**
+ * Log In Form Handling
+ */
+const loginForm = document.getElementById('login-form');
+const loginError = document.getElementById('login-error');
+
+loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    loginError.classList.add('hidden');
+
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+
+    try {
+        const response = await fetch('auth/login', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({email, password})
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            loginError.textContent = data.error;
+            loginError.classList.remove('hidden');
+            return;
+        }
+
+        loginForm.reset();
+
+        switchView('dashboard-view');
+    } catch (err) {
+        loginError.textContent = 'Could not connect to server. Please try again.';
+        loginError.classList.remove('hidden');
+    }
+});
