@@ -3,27 +3,42 @@ const navLinks = document.querySelectorAll('.nav-link');
 // Creates list of all my views
 const views = document.querySelectorAll('.view');
 
+// Function to switch to a specific view
+function switchView(targetId) {
+    // Update nav links - remove active from all, add to matching one
+    navLinks.forEach(l => {
+        l.classList.remove('active');
+        if (l.getAttribute('data-target') === targetId) {
+            l.classList.add('active');
+        }
+    });
+
+    // Update views - hide all, show the target
+    views.forEach(view => {
+        view.classList.add('hidden');
+        if (view.id === targetId) {
+            view.classList.remove('hidden');
+        }
+    });
+}
+
 // Loop through each nav link and add click event listener
 navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         //Prevents page from refreshing on click
         e.preventDefault();
-        // Loops through each nav item to find current active link and change to new active link
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
         // Looks at data-target attribute of clicked link
         const target = link.getAttribute('data-target');
-        // Loops through each view to show/hide based on clicked link
-        views.forEach(view => {
-            // Adds hidden class to all views
-            view.classList.add('hidden');
-            // Identifies target view
-            if(view.id === target) {
-                //Removes hidden class from target view
-                view.classList.remove('hidden');
-            }
-        });
+        switchView(target);
     });
 });
 
-        
+// Handle auth links ("Already have an account?" / "Don't have an account?")
+const authLinks = document.querySelectorAll('.auth-link');
+authLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = link.getAttribute('data-target');
+        switchView(target);
+    });
+});
