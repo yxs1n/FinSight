@@ -84,3 +84,19 @@ authLinks.forEach(link => {
         switchView(target);
     });
 });
+
+// Handle logout
+const logoutLink = document.getElementById('logout-link');
+logoutLink.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    try {
+        await fetch('/auth/logout', {method:'POST'});
+    } catch (err) {
+        console.error('Logout Error:', err);
+    }
+
+    // Whether logout suceeded or failed, go to logged out state
+    updateNav(false);
+    switchView('welcome-view');
+})
