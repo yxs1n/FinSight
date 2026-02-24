@@ -106,6 +106,45 @@
                                 Create Account <i class="fas fa-arrow-right"></i>
                             </button>
                         </form>
+
+                        <p class="auth-footer">
+                            Already have an account?
+                            <a href="#" class="auth-link" data-target="login-view">Log In Here</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!------Login Page------->
+
+            <section id="login-view" class="view hidden">
+                <div class="auth-container">
+                    <div class="auth-card">
+                        <h2 class="auth-title">Welcome Back</h2>
+                        <p class="auth-subtitle">Log in to continue tracking your spending</p>
+
+                        <div id="login-error" class="error-message hidden"></div>
+
+                        <form id="login-form">
+                            <div class="form-group">
+                                <label for="login-email">Email</label>
+                                <input type="email" id="login-email" placeholder="yourname@email.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="login-password">Passowrd</label>
+                                <input type="password" id="login-password" placeholder="Enter your password" required>
+                            </div>
+
+                            <button type="submit" class="btn-accent btn-full">
+                                Log In <i class="fas fa-sign-in-alt"></i>
+                            </button>
+                        </form>
+
+                        <p class="auth-footer">
+                            Don't have an account?
+                            <a href="#" class="auth-link" data-target="register-view">Register Here</a>
+                        </p>
                     </div>
                 </div>
             </section>
