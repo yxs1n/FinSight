@@ -32,6 +32,10 @@ app.use(session({
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
+// Expense Routes
+const expenseRoutes = require('./routes/expenses');
+app.use('/expenses', expenseRoutes);
+
 // Check if the user is currently logged in
 app.get('/auth/status', (req, res) => {
     if (req.session && req.session.userId) {
