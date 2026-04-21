@@ -224,27 +224,11 @@ document.getElementById('all-expenses-list').addEventListener('click', async (e)
 });
 
 /**
- * Load expenses and render them on the dashboard
+ * Load expenses and render the "Recent Expenses" list on the dashboard
  */
-async function loadDashboardExpenses() {
+async function loadRecentExpenses() {
     const expenses = await fetchExpenses();
     renderRecentExpenses(expenses);
-    renderTotalSpent(expenses);
-}
-
-/**
- * Calculate total spent and update the balance card
- */
-function renderTotalSpent(expenses) {
-    const totalElement = document.getElementById('total-spent');
-
-    // Sum up all expense amounts
-    const total = expenses.reduce((sum, expense) => {
-        return sum + Number(expense.amount);
-    }, 0);
-
-    // Format with 2 decimal places and a pound sign
-    totalElement.textContent = `£${total.toFixed(2)}`;
 }
 
 /**

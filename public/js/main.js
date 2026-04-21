@@ -25,7 +25,8 @@ function switchView(targetId) {
     if (targetId === 'add-expense-view') {
         loadCategories();
     } else if (targetId === 'dashboard-view') {
-        loadDashboardExpenses();
+        loadDashboard();
+        loadRecentExpenses();
     } else if (targetId === 'expenses-view') {
         loadAllExpenses();
     } else if (targetId === 'budgets-view') {

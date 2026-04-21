@@ -50,6 +50,10 @@ app.use('/expenses', expenseRoutes);
 const budgetRoutes = require('./routes/budgets');
 app.use('/budgets', budgetRoutes);
 
+// Dashboard Routes
+const dashboardRoutes = require('./routes/dashboard');
+app.use('/dashboard', dashboardRoutes);
+
 // Check if the user is currently logged in
 app.get('/auth/status', (req, res) => {
     if (req.session && req.session.userId) {

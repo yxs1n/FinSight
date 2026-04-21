@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
     </head>
     <body>
         <!-- Navigation Bar -->
@@ -161,11 +162,45 @@
             <!------Dashboard Page------>
 
             <section id="dashboard-view" class="view hidden">
+
+                <!-- This Month Summary -->
                 <div class="balance-card">
-                    <p>Total Spent</p>
+                    <p id="dashboard-month-label">This Month</p>
                     <h1 id="total-spent">£0.00</h1>
                 </div>
 
+                <!-- Spending by Category Chart -->
+                <div class="dashboard-section">
+                    <h2 class="section-title">Spending by Category</h2>
+
+                    <div id="category-chart-empty" class="empty-state hidden">
+                        <i class="fas fa-chart-pie"></i>
+                        <p>No spending this month yet.</p>
+                        <p class="empty-subtitle">Add expenses to see your breakdown here.</p>
+                    </div>
+
+                    <div id="category-chart-container" class="chart-container">
+                        <canvas id="category-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Budget Progress -->
+                <div class="dashboard-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Budget Progress</h2>
+                        <a href="#" class="section-link" data-target="budgets-view">Manage</a>
+                    </div>
+
+                    <div id="budgets-progress-empty" class="empty-state hidden">
+                        <i class="fas fa-wallet"></i>
+                        <p>No budgets set for this month.</p>
+                        <p class="empty-subtitle">Set a budget to track your spending limits.</p>
+                    </div>
+
+                    <div id="budgets-progress-list" class="budget-progress-list"></div>
+                </div>
+
+                <!-- Recent Expenses -->
                 <div class="expenses-section">
                     <div class="section-header">
                         <h2 class="section-title">Recent Expenses</h2>
@@ -294,5 +329,6 @@
         <script src="js/auth.js"></script>
         <script src="js/expenses.js"></script>
         <script src="js/budgets.js"></script>
+        <script src="js/dashboard.js"></script>
     </body>
 </html>
