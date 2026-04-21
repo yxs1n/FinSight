@@ -192,3 +192,110 @@ body {
     text-align: center;
     border: 1px solid var(--border-grey);
 }
+
+/* Auth & Form Cards */
+.auth-container {
+    max-width: 420px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.auth-card {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-grey);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+}
+
+.auth-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    color: var(--text-main);
+}
+
+.auth-subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0 0 2rem;
+}
+
+.auth-footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+}
+
+.auth-link {
+    color: var(--accent-red);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+/* Form Fields */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.optional-label {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    background: var(--bg-darker);
+    border: 1px solid var(--border-grey);
+    border-radius: 8px;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--accent-red);
+}
+
+.form-group input::placeholder {
+    color: var(--text-muted);
+}
+
+/* Feedback Messages */
+.error-message {
+    background: rgba(236, 18, 91, 0.1);
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    margin-bottom: 1.25rem;
+}
+
+.success-message {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid #22c55e;
+    color: #22c55e;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    margin-bottom: 1.25rem;
+}
