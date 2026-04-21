@@ -1,6 +1,5 @@
-------------------------------
+
 -- FinSight Database Schema
-------------------------------
 
 CREATE DATABASE IF NOT EXISTS finsight_db;
 USE finsight_db;
