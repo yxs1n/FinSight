@@ -27,9 +27,6 @@ async function loadCategories() {
     }
 }
 
-// Load categories as soon as the page loads
-loadCategories();
-
 /**
  * Handle Add Expense form submission
  */

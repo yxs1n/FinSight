@@ -20,6 +20,11 @@ function switchView(targetId) {
             view.classList.remove('hidden');
         }
     });
+
+    // Load data specific to certain views
+    if (targetId === 'add-expense-view') {
+        loadCategories();
+    }
 }
 
 // Function to update nav based on login state
