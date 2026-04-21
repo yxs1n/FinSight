@@ -147,7 +147,17 @@ budgetForm.addEventListener('submit', async (e) => {
     const category_id = document.getElementById('budget-category').value;
     const amount_limit = document.getElementById('budget-amount').value;
     const yearMonth = document.getElementById('budget-month').value;
+
+    // Validate the month is in YYYY-MM format
+    // Safari and some browsers let users type invalid text into month inputs
+    if (!/^\d{4}-\d{2}$/.test(yearMonth)) {
+        budgetError.textContent = 'Please select a valid month (e.g. 2026-04).';
+        budgetError.classList.remove('hidden');
+        return;
+    }
+
     const month_year = monthToFullDate(yearMonth);
+    // ...
 
     try {
         const response = await fetch('/budgets', {

@@ -34,6 +34,13 @@ router.post('/', isAuthenticated, async (req, res) => {
         return res.status(400).json({error: 'Amount must be a positive number'});
     }
 
+    // Validate month_year is a valid date string
+    // Accepts both "YYYY-MM-DD" and "YYYY-MM" formats; rejects anything else
+    const parsedDate = new Date(month_year);
+    if (isNaN(parsedDate.getTime())) {
+        return res.status(400).json({error: 'Invalid month format'});
+    }
+
     // Normalise to the 1st of the given month
     const normalisedMonth = firstOfMonth(month_year);
 
