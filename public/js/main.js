@@ -24,6 +24,10 @@ function switchView(targetId) {
     // Load data specific to certain views
     if (targetId === 'add-expense-view') {
         loadCategories();
+    } else if (targetId === 'dashboard-view') {
+        loadDashboardExpenses();
+    } else if (targetId === 'expenses-view') {
+        loadAllExpenses();
     }
 }
 

@@ -75,3 +75,115 @@ expenseForm.addEventListener('submit', async (e) => {
         expenseError.classList.remove('hidden');
     }
 });
+
+/**
+ * Fetch all expenses from the backend
+ * Returns an array of expenses, or an empty array on error
+ */
+async function fetchExpenses() {
+    try {
+        const response = await fetch('/expenses');
+
+        if (!response.ok) {
+            return [];
+        }
+
+        const data = await response.json();
+        return data.expenses;
+    } catch (err) {
+        console.error('Error fetching expenses:', err);
+        return [];
+    }
+}
+
+/**
+ * Build a single expense card element from an expense object
+ */
+function createExpenseCard(expense) {
+    const card = document.createElement('div');
+    card.className = 'expense-card';
+
+    // Format the date nicely (e.g. "21 Apr 2026" instead of "2026-04-21T...")
+    const date = new Date(expense.expense_date);
+    const formattedDate = date.toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    });
+
+    // Format amount with 2 decimal places
+    const formattedAmount = Number(expense.amount).toFixed(2);
+
+    card.innerHTML = `
+        <div class="expense-info">
+            <div class="expense-category">${expense.category_name}</div>
+            <div class="expense-description">${expense.description || ''}</div>
+            <div class="expense-date">${formattedDate}</div>
+        </div>
+        <div class="expense-amount">£${formattedAmount}</div>
+    `;
+
+    return card;
+}
+
+/**
+ * Render expenses into the Recent Expenses list on the dashboard
+ * Shows up to 5 most recent expenses
+ */
+function renderRecentExpenses(expenses) {
+    const list = document.getElementById('recent-expenses-list');
+    const empty = document.getElementById('recent-expenses-empty');
+
+    // Clear any existing content
+    list.innerHTML = '';
+
+    if (expenses.length === 0) {
+        empty.classList.remove('hidden');
+        return;
+    }
+
+    empty.classList.add('hidden');
+
+    // Take only the first 5 (they're already sorted newest first by the backend)
+    const recent = expenses.slice(0, 5);
+    recent.forEach(expense => {
+        list.appendChild(createExpenseCard(expense));
+    });
+}
+
+/**
+ * Render expenses into the All Expenses list
+ */
+function renderAllExpenses(expenses) {
+    const list = document.getElementById('all-expenses-list');
+    const empty = document.getElementById('all-expenses-empty');
+
+    list.innerHTML = '';
+
+    if (expenses.length === 0) {
+        empty.classList.remove('hidden');
+        return;
+    }
+
+    empty.classList.add('hidden');
+
+    expenses.forEach(expense => {
+        list.appendChild(createExpenseCard(expense));
+    });
+}
+
+/**
+ * Load expenses and render them on the dashboard
+ */
+async function loadDashboardExpenses() {
+    const expenses = await fetchExpenses();
+    renderRecentExpenses(expenses);
+}
+
+/**
+ * Load expenses and render them on the All Expenses view
+ */
+async function loadAllExpenses() {
+    const expenses = await fetchExpenses();
+    renderAllExpenses(expenses);
+}
