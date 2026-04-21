@@ -23,6 +23,9 @@
                     <a href="#" class="nav-link" data-target="add-expense-view" data-auth="user">
                         <i class="fas fa-plus"></i> Add Expense
                     </a>
+                    <a href="#" class="nav-link" data-target="expenses-view" data-auth="user">
+                        <i class="fas fa-list"></i> Expenses
+                    </a>
                     <a href="#" class="nav-link" data-target="register-view" data-auth="guest">
                         <i class="fas fa-user-plus"></i> Register
                     </a>
@@ -157,7 +160,38 @@
             <section id="dashboard-view" class="view hidden">
                 <div class="balance-card">
                     <p>Total Spent</p>
-                    <h1>£0.00</h1>
+                    <h1 id="total-spent">£0.00</h1>
+                </div>
+
+                <div class="expenses-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Recent Expenses</h2>
+                        <a href="#" class="section-link" data-target="expenses-view">View all</a>
+                    </div>
+
+                    <div id="recent-expenses-empty" class="empty-state hidden">
+                        <i class="fas fa-receipt"></i>
+                        <p>No expenses logged yet.</p>
+                        <p class="empty-subtitle">Add your first expense to start tracking.</p>
+                    </div>
+
+                    <div id="recent-expenses-list" class="expenses-list"></div>
+                </div>
+            </section>
+
+            <!------Expenses Page------>
+
+            <section id="expenses-view" class="view hidden">
+                <div class="expenses-section">
+                    <h2 class="section-title">All Expenses</h2>
+
+                    <div id="all-expenses-empty" class="empty-state hidden">
+                        <i class="fas fa-receipt"></i>
+                        <p>No expenses logged yet.</p>
+                        <p class="empty-subtitle">Add your first expense to start tracking.</p>
+                    </div>
+
+                    <div id="all-expenses-list" class="expenses-list"></div>
                 </div>
             </section>
 
