@@ -15,6 +15,10 @@ async function loadCategories() {
 
         const data = await response.json();
 
+        // Reset the dropdown to just the placeholder option
+        // This prevents duplicates if the function runs more than once
+        categorySelect.innerHTML = '<option value="">Select a category</option>';
+
         // Add each category as an option in the dropdown
         data.categories.forEach(category => {
             const option = document.createElement('option');
