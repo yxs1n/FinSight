@@ -3,7 +3,7 @@ require('dotenv').config();
 
 // Aiven and most managed MySQL providers require SSL in production
 const sslConfig = process.env.DB_SSL === 'true'
-    ? { rejectUnauthorized: true }
+    ? { rejectUnauthorized: false }
     : undefined;
 
 // Create a connection pool to the database
