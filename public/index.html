@@ -26,6 +26,9 @@
                     <a href="#" class="nav-link" data-target="expenses-view" data-auth="user">
                         <i class="fas fa-list"></i> Expenses
                     </a>
+                    <a href="#" class="nav-link" data-target="budgets-view" data-auth="user">
+                        <i class="fas fa-wallet"></i> Budgets
+                    </a>
                     <a href="#" class="nav-link" data-target="register-view" data-auth="guest">
                         <i class="fas fa-user-plus"></i> Register
                     </a>
@@ -236,10 +239,60 @@
                     </div>
                 </div>
             </section>
+
+            <!------Budgets Page------>
+
+            <section id="budgets-view" class="view hidden">
+                <div class="auth-container">
+                    <div class="auth-card">
+                        <h2 class="auth-title">Set Budget</h2>
+                        <p class="auth-subtitle">Set a spending limit for a category this month</p>
+
+                        <div id="budget-error" class="error-message hidden"></div>
+                        <div id="budget-success" class="success-message hidden"></div>
+
+                        <form id="budget-form">
+                            <div class="form-group">
+                                <label for="budget-category">Category</label>
+                                <select id="budget-category" required>
+                                    <option value="">Select a category</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="budget-amount">Monthly Limit (£)</label>
+                                <input type="number" id="budget-amount" placeholder="0.00" step="0.01" min="0.01" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="budget-month">Month</label>
+                                <input type="month" id="budget-month" required>
+                            </div>
+
+                            <button type="submit" class="btn-accent btn-full">
+                                Save Budget <i class="fas fa-check"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="expenses-section">
+                    <h2 class="section-title">Current Budgets</h2>
+
+                    <div id="budgets-empty" class="empty-state hidden">
+                        <i class="fas fa-wallet"></i>
+                        <p>No budgets set yet.</p>
+                        <p class="empty-subtitle">Set a budget above to start tracking limits.</p>
+                    </div>
+
+                    <div id="budgets-list" class="expenses-list"></div>
+                </div>
+            </section>
         </main>
 
         <script src="js/main.js"></script>
         <script src="js/auth.js"></script>
         <script src="js/expenses.js"></script>
+        <script src="js/budgets.js"></script>
     </body>
 </html>

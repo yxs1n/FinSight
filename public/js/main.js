@@ -28,6 +28,8 @@ function switchView(targetId) {
         loadDashboardExpenses();
     } else if (targetId === 'expenses-view') {
         loadAllExpenses();
+    } else if (targetId === 'budgets-view') {
+        loadBudgetsView();
     }
 }
 
