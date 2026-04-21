@@ -94,6 +94,15 @@ authLinks.forEach(link => {
     });
 });
 
+// Handle the "Get Started" button on the welcome page
+const heroRegisterBtn = document.getElementById('hero-register-btn');
+if (heroRegisterBtn) {
+    heroRegisterBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchView('register-view');
+    });
+}
+
 // Handle logout
 const logoutLink = document.getElementById('logout-link');
 logoutLink.addEventListener('click', async (e) => {
