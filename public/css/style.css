@@ -299,3 +299,255 @@ body {
     font-size: 0.88rem;
     margin-bottom: 1.25rem;
 }
+
+/* Dashboard Sections */
+.dashboard-section,
+.expenses-section {
+    margin-top: 2.5rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0 0 1rem;
+}
+
+.section-header .section-title {
+    margin: 0;
+}
+
+.section-link {
+    color: var(--accent-red);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.section-link:hover {
+    color: var(--accent-red-hover);
+    text-decoration: underline;
+}
+
+.section-link:visited {
+    color: var(--accent-red);
+}
+
+/* Budget Progress */
+.budget-progress-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.budget-progress-card {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-grey);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+}
+
+.budget-progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.6rem;
+}
+
+.budget-progress-category {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.budget-progress-amount {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.budget-progress-amount.over-budget {
+    color: var(--accent-red);
+    font-weight: 700;
+}
+
+.budget-progress-bar {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    background: var(--bg-darker);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.budget-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4aa96c, #6fc98b);
+    border-radius: 4px;
+    transition: width 0.4s ease-out;
+}
+
+.budget-progress-fill.over-budget {
+    background: linear-gradient(90deg, var(--accent-red), #ff4570);
+}
+
+/* Expense Cards */
+.expenses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.expense-card {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-grey);
+    border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: border-color 0.2s;
+}
+
+.expense-card:hover {
+    border-color: #555;
+}
+
+.expense-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+}
+
+.expense-category {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.expense-description {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.expense-date {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+}
+
+.expense-right {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    flex-shrink: 0;
+}
+
+.expense-amount {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    font-variant-numeric: tabular-nums;
+}
+
+.expense-delete {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.expense-delete:hover {
+    background: rgba(236, 18, 91, 0.12);
+    color: var(--accent-red);
+}
+
+/* Chart Container */
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 420px;
+    margin: 0 auto;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-grey);
+    border-radius: 10px;
+    padding: 1.25rem;
+    box-sizing: border-box;
+}
+
+/* Summary Card (Dashboard Top) */
+.balance-card {
+    background: linear-gradient(135deg, var(--bg-dark), var(--bg-darker));
+    padding: 2.5rem 2rem;
+    border-radius: 14px;
+    text-align: center;
+    border: 1px solid var(--border-grey);
+}
+
+.balance-card p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 0.75rem;
+}
+
+.balance-card h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Empty States */
+.empty-state {
+    background: var(--bg-dark);
+    border: 1px dashed var(--border-grey);
+    border-radius: 10px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.empty-state i {
+    font-size: 2rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.empty-state p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+.empty-state .empty-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}

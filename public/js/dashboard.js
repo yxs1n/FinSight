@@ -66,12 +66,20 @@ function renderCategoryChart(spendingByCategory) {
     const labels = spendingByCategory.map(c => c.category_name);
     const data = spendingByCategory.map(c => c.total);
 
-    // A palette of reds and greys that matches the app theme
+    // A palette that leads with the brand accent then moves through
+    // complementary tones for visual distinction between slices
     const colors = [
-        '#ec125b', '#d4104f', '#b10e43',
-        '#8a0b35', '#666666', '#888888',
-        '#aaaaaa', '#ec6891', '#555555',
-        '#c7104a', '#999999'
+        '#ec125b', // accent red (brand primary)
+        '#4aa96c', // green (signals "healthy" — matches budget bars)
+        '#f39c12', // amber (warm contrast)
+        '#3498db', // blue (cool contrast)
+        '#9b59b6', // purple
+        '#1abc9c', // teal
+        '#e67e22', // orange
+        '#ec6891', // soft pink (lighter red)
+        '#888888', // mid grey (for smaller slices)
+        '#aaaaaa', // light grey
+        '#555555'  // dark grey (for smallest slices)
     ];
 
     // If a chart already exists on this canvas, destroy it first
