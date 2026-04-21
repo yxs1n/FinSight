@@ -98,8 +98,9 @@ async function fetchExpenses() {
 
 /**
  * Build a single expense card element from an expense object
+ * If showDelete is true, a delete button is included
  */
-function createExpenseCard(expense) {
+function createExpenseCard(expense, showDelete = false) {
     const card = document.createElement('div');
     card.className = 'expense-card';
 
@@ -114,13 +115,23 @@ function createExpenseCard(expense) {
     // Format amount with 2 decimal places
     const formattedAmount = Number(expense.amount).toFixed(2);
 
+    // Build the inner HTML (with or without delete button)
+    const deleteButton = showDelete
+        ? `<button class="expense-delete" data-id="${expense.id}" aria-label="Delete expense">
+               <i class="fas fa-trash"></i>
+           </button>`
+        : '';
+
     card.innerHTML = `
         <div class="expense-info">
             <div class="expense-category">${expense.category_name}</div>
             <div class="expense-description">${expense.description || ''}</div>
             <div class="expense-date">${formattedDate}</div>
         </div>
-        <div class="expense-amount">£${formattedAmount}</div>
+        <div class="expense-right">
+            <div class="expense-amount">£${formattedAmount}</div>
+            ${deleteButton}
+        </div>
     `;
 
     return card;
@@ -153,6 +164,7 @@ function renderRecentExpenses(expenses) {
 
 /**
  * Render expenses into the All Expenses list
+ * Each card includes a delete button
  */
 function renderAllExpenses(expenses) {
     const list = document.getElementById('all-expenses-list');
@@ -168,9 +180,44 @@ function renderAllExpenses(expenses) {
     empty.classList.add('hidden');
 
     expenses.forEach(expense => {
-        list.appendChild(createExpenseCard(expense));
+        list.appendChild(createExpenseCard(expense, true));
     });
 }
+
+/**
+ * Handle clicks on the All Expenses list (event delegation)
+ * Listens for clicks on delete buttons
+ */
+document.getElementById('all-expenses-list').addEventListener('click', async (e) => {
+    // Find the delete button that was clicked (if any)
+    const deleteBtn = e.target.closest('.expense-delete');
+    if (!deleteBtn) return;
+
+    // Get the expense ID from the button's data attribute
+    const expenseId = deleteBtn.getAttribute('data-id');
+
+    // Confirm before deleting
+    if (!confirm('Are you sure you want to delete this expense?')) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/expenses/${expenseId}`, {
+            method: 'DELETE'
+        });
+
+        if (!response.ok) {
+            alert('Could not delete expense. Please try again.');
+            return;
+        }
+
+        // Reload the list to reflect the deletion
+        loadAllExpenses();
+    } catch (err) {
+        console.error('Error deleting expense:', err);
+        alert('Could not connect to server. Please try again.');
+    }
+});
 
 /**
  * Load expenses and render them on the dashboard
