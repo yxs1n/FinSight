@@ -121,3 +121,28 @@ logoutLink.addEventListener('click', async (e) => {
     updateNav(false);
     switchView('welcome-view');
 })
+
+/**
+ * Mobile navigation toggle
+ * Opens/closes the nav menu when the hamburger is tapped
+ */
+const navToggle = document.getElementById('nav-toggle');
+const navLinksContainer = document.getElementById('nav-links');
+
+navToggle.addEventListener('click', () => {
+    const isOpen = navLinksContainer.classList.toggle('open');
+    // Keep aria-expanded in sync for screen readers
+    navToggle.setAttribute('aria-expanded', isOpen);
+});
+
+/**
+ * Close the mobile menu when a nav link is clicked
+ * Without this, the menu would stay open after navigation, which feels stuck
+ */
+navLinksContainer.addEventListener('click', (e) => {
+    // Only close on actual link clicks, not clicks on the container itself
+    if (e.target.closest('.nav-link')) {
+        navLinksContainer.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+    }
+});

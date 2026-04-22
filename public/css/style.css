@@ -616,3 +616,65 @@ body {
         flex-direction: column;
     }
 }
+
+/* Hamburger Toggle Button */
+.nav-toggle {
+    display: none; /* Hidden on desktop by default */
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.nav-toggle:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-wrap: wrap;
+    }
+
+    /* Show the hamburger on mobile */
+    .nav-toggle {
+        display: block;
+    }
+
+    /* Hide the nav links by default on mobile */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border-grey);
+    }
+
+    /* Show the nav links when the menu is toggled open */
+    .nav-links.open {
+        display: flex;
+    }
+
+    /* Stack the nav links vertically with proper spacing */
+    .nav-links .nav-link {
+        padding: 0.8rem 0.5rem;
+        border-radius: 6px;
+        transition: background 0.2s;
+    }
+
+    .nav-links .nav-link:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Remove the active state's bottom border on mobile — use a different marker */
+    .nav-links .nav-link.active {
+        border-bottom: none;
+        background: rgba(236, 18, 91, 0.12);
+    }
+}
