@@ -269,6 +269,33 @@ body {
     transition: border-color 0.2s;
 }
 
+/* Date/month input normalisation — iOS Safari renders these differently */
+.form-group input[type="date"],
+.form-group input[type="month"] {
+    -webkit-appearance: none;
+    appearance: none;
+    text-align: left;
+    /* Match the height of a normal text input on iOS */
+    min-height: 2.6rem;
+    /* Prevent iOS auto-zoom when tapping the field */
+    font-size: 16px;
+    /* iOS adds internal padding we don't want */
+    line-height: 1.2;
+}
+
+/* Style the native calendar indicator (the small icon on the right) */
+.form-group input[type="date"]::-webkit-calendar-picker-indicator,
+.form-group input[type="month"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7);
+    cursor: pointer;
+}
+
+/* Remove iOS's default placeholder styling for empty date/month inputs */
+.form-group input[type="date"]::-webkit-date-and-time-value,
+.form-group input[type="month"]::-webkit-date-and-time-value {
+    text-align: left;
+}
+
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
