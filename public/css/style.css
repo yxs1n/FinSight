@@ -551,3 +551,68 @@ body {
     color: var(--text-muted);
     font-weight: 400;
 }
+
+/* Dashboard summary row (balance + streak side by side) */
+.summary-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.summary-row .balance-card {
+    flex: 2;
+    margin-bottom: 0;
+}
+
+.streak-card {
+    flex: 1;
+    background: linear-gradient(135deg, var(--bg-dark), var(--bg-darker));
+    padding: 2rem 1.5rem;
+    border-radius: 14px;
+    text-align: center;
+    border: 1px solid var(--border-grey);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.streak-card p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 0.5rem;
+}
+
+.streak-card h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.streak-flame {
+    font-size: 2rem;
+}
+
+.streak-subtitle {
+    color: var(--text-muted) !important;
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    margin-top: 0.5rem !important;
+}
+
+/* On narrow screens, stack them */
+@media (max-width: 640px) {
+    .summary-row {
+        flex-direction: column;
+    }
+}
