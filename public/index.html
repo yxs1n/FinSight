@@ -163,10 +163,21 @@
 
             <section id="dashboard-view" class="view hidden">
 
-                <!-- This Month Summary -->
-                <div class="balance-card">
-                    <p id="dashboard-month-label">This Month</p>
-                    <h1 id="total-spent">£0.00</h1>
+                <!-- This Month Summary + Streak -->
+                <div class="summary-row">
+                    <div class="balance-card">
+                        <p id="dashboard-month-label">This Month</p>
+                        <h1 id="total-spent">£0.00</h1>
+                    </div>
+
+                    <div class="streak-card">
+                        <p>Logging Streak</p>
+                        <h1>
+                            <span class="streak-flame">🔥</span>
+                            <span id="streak-count">0</span>
+                        </h1>
+                        <p class="streak-subtitle" id="streak-subtitle">Start your streak!</p>
+                    </div>
                 </div>
 
                 <!-- Spending by Category Chart -->

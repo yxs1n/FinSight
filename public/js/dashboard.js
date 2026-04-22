@@ -177,4 +177,37 @@ async function loadDashboard() {
     renderSummary(data.total_spent);
     renderCategoryChart(data.spending_by_category);
     renderBudgetProgress(data.budgets);
+    loadStreak();
+}
+
+/**
+ * Fetch and display the user's current logging streak
+ */
+async function loadStreak() {
+    const countEl = document.getElementById('streak-count');
+    const subtitleEl = document.getElementById('streak-subtitle');
+
+    try {
+        const response = await fetch('/streak');
+        if (!response.ok) return;
+        const data = await response.json();
+        const streak = data.streak;
+
+        countEl.textContent = streak;
+        subtitleEl.textContent = streakMessage(streak);
+    } catch (err) {
+        console.error('Error fetching streak:', err);
+    }
+}
+
+/**
+ * Return an encouraging message based on the streak length
+ */
+function streakMessage(streak) {
+    if (streak === 0) return 'Log an expense to start a streak!';
+    if (streak === 1) return 'Nice start — come back tomorrow!';
+    if (streak < 5) return 'Keep it going!';
+    if (streak < 10) return "You're on a roll!";
+    if (streak < 30) return "You're on fire!";
+    return 'Legendary dedication!';
 }

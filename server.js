@@ -54,6 +54,10 @@ app.use('/budgets', budgetRoutes);
 const dashboardRoutes = require('./routes/dashboard');
 app.use('/dashboard', dashboardRoutes);
 
+// Streak Routes
+const streakRoutes = require('./routes/streak');
+app.use('/streak', streakRoutes);
+
 // Check if the user is currently logged in
 app.get('/auth/status', (req, res) => {
     if (req.session && req.session.userId) {
