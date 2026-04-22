@@ -70,15 +70,6 @@ app.get('/auth/status', (req, res) => {
     }
 });
 
-app.get('/test-db', async (req, res) => {
-    try {
-        const [rows] = await db.query('SELECT "Connection Succesful" as status');
-        res.json(rows);
-    } catch (err) {
-        res.status(500).send('Database connection failed: ' + err.message);
-    }
-});
-
 // Start the server only after verifying the database connection works
 const PORT = process.env.PORT || 3000;
 

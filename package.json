@@ -11,8 +11,8 @@
     "type": "git",
     "url": "git+https://github.com/yxs1n/FinSight.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["budgeting", "expense-tracker", "student", "nodejs", "express", "mysql"],
+  "author": "Yasin Ahmed",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/yxs1n/FinSight/issues"
