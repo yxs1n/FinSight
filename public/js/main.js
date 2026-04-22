@@ -97,6 +97,16 @@ authLinks.forEach(link => {
     });
 });
 
+// Handle section links ("Manage", "View all" on the dashboard)
+const sectionLinks = document.querySelectorAll('.section-link');
+sectionLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = link.getAttribute('data-target');
+        if (target) switchView(target);
+    });
+});
+
 // Handle the "Get Started" button on the welcome page
 const heroRegisterBtn = document.getElementById('hero-register-btn');
 if (heroRegisterBtn) {
